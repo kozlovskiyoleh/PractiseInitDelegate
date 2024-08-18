@@ -7,9 +7,9 @@ namespace InitDelegate
         public static void Main(string[] args)
         {
             string[] names = { "Oleh", "Maria", "Ivan", "Yura", "Andrew", "Bim", "Toxic", "Dina" };
-            BubbleSort(names, new StringComparer(CompareStringLenght));
+            BubbleSort(names, CompareStringLenght);
             var compare = new Comparer { Descending = true };
-            BubbleSort(names, new StringComparer(compare.CompareStrings));
+            BubbleSort(names, compare.CompareStrings);
         }
 
         public static void OutputArray(string[] array)
