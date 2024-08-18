@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 namespace InitDelegate
 {
-    public delegate int StringComparer(string x, string y);
     public class Program
     {
         public static void Main(string[] args)
@@ -18,7 +17,7 @@ namespace InitDelegate
                 Console.WriteLine(item);
         }
 
-        public static void BubbleSort(string[] arr, StringComparer comparer)
+        public static void BubbleSort(string[] arr, Func<string, string, int> comparer)
         {
             int n = arr.Length;
             for (int i = 0; i < n - 1; i++)
