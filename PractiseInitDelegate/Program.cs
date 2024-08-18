@@ -7,14 +7,9 @@ namespace InitDelegate
         public static void Main(string[] args)
         {
             string[] names = { "Oleh", "Maria", "Ivan", "Yura", "Andrew", "Bim", "Toxic", "Dina" };
-            Console.WriteLine("Default array");
-            OutputArray(names);
-            Console.WriteLine("\n Sorted array by lenght");
             BubbleSort(names, new StringComparer(CompareStringLenght));
-            OutputArray(names);
-            Console.WriteLine("\n Sorted array by names");
-            BubbleSort(names, new StringComparer(CompareString));
-            OutputArray(names);
+            var compare = new Comparer { Descending = true };
+            BubbleSort(names, new StringComparer(compare.CompareStrings));
         }
 
         public static void OutputArray(string[] array)
@@ -42,12 +37,14 @@ namespace InitDelegate
                 throw new ArgumentNullException();
             return x.Length.CompareTo(y.Length);
         }
+    }
 
-        public static int CompareString(string? x, string? y)
+    class Comparer
+    {
+        public bool Descending { get; set; }
+        public int CompareStrings(string x, string y)
         {
-            if (x == null || y == null)
-                throw new ArgumentNullException();
-            return x.CompareTo(y);
+            return x.CompareTo(y) * (Descending ? -1 : 1);
         }
     }
 }
